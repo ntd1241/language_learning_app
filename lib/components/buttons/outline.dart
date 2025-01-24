@@ -1,10 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:gradient_borders/gradient_borders.dart';
 
 class OutlineButton extends StatelessWidget {
   const OutlineButton({
     super.key,
-    this.text = ''
+    this.text = '',
   });
 
   final String text;
@@ -16,7 +15,6 @@ class OutlineButton extends StatelessWidget {
         debugPrint('Received click');
       },
       child: Text("BUtton"),
-      
     );
   }
 }

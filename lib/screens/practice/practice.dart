@@ -3,7 +3,7 @@ import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:language_learning_app/components/buttons/content_styles/text.dart';
 import 'package:language_learning_app/components/buttons/gradient_outline.dart';
 import 'package:language_learning_app/components/headers/index.dart';
-import 'package:language_learning_app/screens/practice/types/flashcards/flashcard.dart';
+import 'package:language_learning_app/screens/practice/types/flashcards/flashcard_screen.dart';
 import 'package:language_learning_app/theme/colors.dart';
 
 class PracticeScreen extends StatelessWidget {
@@ -21,7 +21,7 @@ class PracticeScreen extends StatelessWidget {
       appBar: Header(
         titleWidget: GradientOutlineButton(
           child: ButtonContentText(
-            label: "Multiple choice",
+            label: "Flashcards",
           ),
         ),
       ),
@@ -38,18 +38,9 @@ class PracticeScreen extends StatelessWidget {
         width: double.infinity,
         height: double.infinity,
         child: Stack(
-          alignment: Alignment.topCenter,
+          alignment: Alignment.center,
           children: [
-            Container(
-              alignment: Alignment.center,
-              padding: EdgeInsets.all(24),
-              child: FlashCard(
-                word: "hello",
-                label: "verb",
-                ipa: "/hɛˈloʊ/",
-                meaning: "chao buoi sang",
-              ),
-            ),
+            FlashCardScreen(),
           ],
         ),
       ),

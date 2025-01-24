@@ -44,7 +44,8 @@ class FlashCard extends StatelessWidget {
       Center(
         child: Text(
           meaning,
-          style: MyTypography.titleM,
+          textAlign: TextAlign.center,
+          style: MyTypography.h5,
         ),
       ),
     ];
@@ -54,7 +55,8 @@ class FlashCard extends StatelessWidget {
         Center(
           child: Text(
             definition!,
-            style: MyTypography.titleM,
+            textAlign: TextAlign.center,
+            style: MyTypography.h6,
           ),
         ),
       );
@@ -65,7 +67,8 @@ class FlashCard extends StatelessWidget {
         Center(
           child: Text(
             example!,
-            style: MyTypography.titleM,
+            textAlign: TextAlign.center,
+            style: MyTypography.h6,
           ),
         ),
       );
@@ -135,12 +138,15 @@ class FlashCard extends StatelessWidget {
                   onPressed: () {},
                 ),
               ),
-              Center(
+              Container(
+                alignment: Alignment.center,
+                padding: EdgeInsets.fromLTRB(16, 72, 16, 32),
                 child: Column(
                   spacing: 4.0,
                   mainAxisSize: MainAxisSize.min,
                   children: [
                     Text(
+                      textAlign: TextAlign.center,
                       word,
                       style: MyTypography.h5,
                     ),

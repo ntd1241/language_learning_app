@@ -11,6 +11,7 @@ dependencies:
   flip_card: ^0.7.0
   flutter:
     sdk: flutter
+  flutter_card_swiper: ^7.0.2
   flutter_tabler_icons: ^1.43.0
   gradient_borders: ^1.0.1
 

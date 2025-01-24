@@ -22,6 +22,12 @@ abstract final class MyTypography {
     fontSize: 24,
     height: 32 / 24,
   );
+  static const h6 = TextStyle(
+    color: AppColors.white,
+    fontWeight: FontWeight.w600,
+    fontSize: 20,
+    height: 24 / 20,
+  );
 
   //Content
   static const tab = TextStyle(
