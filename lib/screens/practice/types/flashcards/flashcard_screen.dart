@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_card_swiper/flutter_card_swiper.dart';
 import 'package:language_learning_app/screens/practice/types/flashcards/flashcard.dart';
+import 'package:language_learning_app/screens/practice/types/skeleton.dart';
 
 class FlashCardScreen extends StatelessWidget {
   const FlashCardScreen({
@@ -56,17 +57,23 @@ class FlashCardScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return AspectRatio(
-      aspectRatio: 1.0,
-      child: CardSwiper(
-        scale: 0.95,
-        backCardOffset: Offset(0, 24),
-        numberOfCardsDisplayed: 3,
-        duration: Duration(seconds: 5),
-        cardsCount: cards.length,
-        cardBuilder: (context, index, percentThresholdX, percentThresholdY) =>
-            cards[index],
+    return PracticeTypeSkeleton(
+      mainContent: Center(
+        child: AspectRatio(
+          aspectRatio: 1.0,
+          child: CardSwiper(
+            scale: 0.95,
+            backCardOffset: Offset(0, 24),
+            numberOfCardsDisplayed: 3,
+            duration: Duration(seconds: 5),
+            cardsCount: cards.length,
+            cardBuilder:
+                (context, index, percentThresholdX, percentThresholdY) =>
+                    cards[index],
+          ),
+        ),
       ),
+      instruction: Text("Touch card to flip"),
     );
   }
 }

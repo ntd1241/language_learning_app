@@ -27,7 +27,7 @@ class PracticeScreen extends StatelessWidget {
       ),
       body: Container(
         margin: EdgeInsets.fromLTRB(0, 24, 0, 0),
-        padding: EdgeInsets.fromLTRB(0, 0, 0, 88),
+        padding: EdgeInsets.fromLTRB(0, 0, 0, 40),
         decoration: BoxDecoration(
           border: GradientBoxBorder(
             gradient: AppColors.graWhiteGhost,
@@ -37,12 +37,7 @@ class PracticeScreen extends StatelessWidget {
         ),
         width: double.infinity,
         height: double.infinity,
-        child: Stack(
-          alignment: Alignment.center,
-          children: [
-            FlashCardScreen(),
-          ],
-        ),
+        child: FlashCardScreen(),
       ),
     );
   }

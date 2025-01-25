@@ -45,4 +45,17 @@ abstract final class AppColors {
       Color(0xFFFFC4FA),
     ],
   );
+  static const graAqua = RadialGradient(
+    // begin: Alignment(0.4566, 1.0),
+    // end: Alignment(-1.11, -1.0),
+    center: Alignment(0.4566, 1.0),
+    radius: 1.0588,
+    colors: <Color>[
+      Color(0xFFFFB8E0),
+      Color(0xFFBE9EFF),
+      Color(0xFF88C0FC),
+      Color(0xFF86FF99),
+    ],
+    stops: [0.0, 0.3889, 0.674, 1.0],
+  );
 }

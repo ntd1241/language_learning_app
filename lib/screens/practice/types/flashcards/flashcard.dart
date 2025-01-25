@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:language_learning_app/components/buttons/icon_button.dart';
 import 'package:language_learning_app/components/tabs/bottom_tab_bar.dart';
+import 'package:language_learning_app/theme/shadow.dart';
 import 'package:language_learning_app/theme/typography.dart';
 import 'package:language_learning_app/theme/colors.dart';
 import 'package:flutter_tabler_icons/flutter_tabler_icons.dart';
@@ -115,13 +116,15 @@ class FlashCard extends StatelessWidget {
         front: Container(
           alignment: Alignment.center,
           decoration: BoxDecoration(
-            color: AppColors.bgLighter,
-            border: GradientBoxBorder(
-              gradient: AppColors.graPink.withOpacity(0.4),
-              width: 2,
-            ),
-            borderRadius: BorderRadius.circular(24),
-          ),
+              color: AppColors.bgLighter,
+              border: GradientBoxBorder(
+                gradient: AppColors.graPink.withOpacity(0.4),
+                width: 2,
+              ),
+              borderRadius: BorderRadius.circular(24),
+              boxShadow: [
+                AppShadows.popUp,
+              ]),
           child: Stack(
             children: [
               Positioned(
