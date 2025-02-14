@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:language_learning_app/screens/practice/practice.dart';
 import 'package:language_learning_app/theme/theme.dart';
+import 'package:language_learning_app/theme/colors.dart';
 
 void main() {
   runApp(const MainApp());
@@ -12,9 +12,14 @@ class MainApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-        title: "Language Learning App",
-        theme: theme,
-        home: PracticeScreen());
+      title: "Language Learning App",
+      theme: theme,
+      home: const Scaffold(
+        body: Center(
+          child: Text('Hello World 123!'),
+        ),
+        backgroundColor: AppColors.bgMain,
+      ),
+    );
   }
 }

@@ -7,13 +7,8 @@ environment:
   sdk: ^3.6.1
 
 dependencies:
-  expand_tap_area: ^1.1.1
-  flip_card: ^0.7.0
   flutter:
     sdk: flutter
-  flutter_card_swiper: ^7.0.2
-  flutter_tabler_icons: ^1.43.0
-  gradient_borders: ^1.0.1
 
 dev_dependencies:
   flutter_test:
