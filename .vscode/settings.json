@@ -4,4 +4,10 @@
     "editor.codeActionsOnSave": {
         "source.fixAll": "explicit",        
     },
+    "[java]": {
+        "editor.defaultFormatter": "redhat.java"
+    },
+    "[json]": {
+        "editor.defaultFormatter": "esbenp.prettier-vscode"
+    },
 }

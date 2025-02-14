@@ -1,4 +1,5 @@
 import 'package:flip_card/flip_card.dart';
+import 'package:flip_card/flip_card_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:gradient_borders/box_borders/gradient_box_border.dart';
 import 'package:language_learning_app/components/buttons/icon_button.dart';
@@ -17,6 +18,7 @@ class FlashCard extends StatelessWidget {
     required this.meaning,
     this.definition,
     this.example,
+    this.controller,
   });
 
   final String word;
@@ -25,6 +27,7 @@ class FlashCard extends StatelessWidget {
   final String meaning;
   final String? definition;
   final String? example;
+  final FlipCardController? controller;
 
   List<String> getTabs() {
     List<String> tabs = ["Meaning"];
@@ -110,6 +113,7 @@ class FlashCard extends StatelessWidget {
     return AspectRatio(
       aspectRatio: 1.0,
       child: FlipCard(
+        controller: controller,
         fill: Fill.fillBack,
         side: CardSide.FRONT,
         speed: 5000,

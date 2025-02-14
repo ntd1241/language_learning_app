@@ -37,7 +37,7 @@ class PracticeScreen extends StatelessWidget {
         ),
         width: double.infinity,
         height: double.infinity,
-        child: FlashCardScreen(),
+        child: FlashCardScreenV2(),
       ),
     );
   }
