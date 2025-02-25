@@ -5,6 +5,8 @@ abstract final class AppColors {
   //Backgrounds
   static const bgMain = Color(0xFF181A20);
   static const bgLighter = Color(0xFF262A34);
+  static const card = Color(0xFF1F222A);
+  static const bgBlur = Color(0xD9181A20);
 
   //Primitives
   static const white = Color(0xFFFFFFFF);

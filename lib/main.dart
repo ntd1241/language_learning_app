@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:language_learning_app/screens/practice/practice.dart';
+import 'package:language_learning_app/screens/your_learning/your_learning_screen.dart';
 import 'package:language_learning_app/theme/theme.dart';
 
 void main() {
@@ -15,6 +15,6 @@ class MainApp extends StatelessWidget {
         debugShowCheckedModeBanner: false,
         title: "Language Learning App",
         theme: theme,
-        home: PracticeScreen());
+        home: YourLearningScreen());
   }
 }
