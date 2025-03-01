@@ -1,29 +1,42 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
+import 'package:language_learning_app/components/app_bars/header.dart';
 import 'package:language_learning_app/theme/colors.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
   const CustomSliverAppBar({
     super.key,
     this.title,
+    this.flexibleSpaceTitle,
     this.leading,
     this.actions,
     this.bottom,
     this.isScrolled = false,
+    this.pinned = false,
+    this.floating = false,
+    this.snap = false,
+    this.expandedHeightOffet,
   });
 
   final Widget? title;
+  final Widget? flexibleSpaceTitle;
   final Widget? leading;
   final List<Widget>? actions;
   final PreferredSizeWidget? bottom;
   final bool isScrolled;
+  final bool pinned;
+  final bool floating;
+  final bool snap;
+  final double? expandedHeightOffet;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       toolbarHeight: 48 + 32,
+      expandedHeight: expandedHeightOffet == null
+          ? null
+          : 48 + 32 + (expandedHeightOffet ?? 0),
       leading: Padding(
         padding: const EdgeInsets.only(left: 24),
         child: Center(
@@ -41,21 +54,28 @@ class CustomSliverAppBar extends StatelessWidget {
       title: title,
       centerTitle: true,
       bottom: bottom,
-      pinned: true,
-      floating: true,
-      snap: true,
-      backgroundColor: bottom == null ? Colors.transparent : AppColors.bgMain,
+      pinned: pinned,
+      floating: floating,
+      snap: snap,
       elevation: 0,
       scrolledUnderElevation: 0,
-      flexibleSpace: (!isScrolled || bottom != null)
-          ? null
-          : FlexibleSpaceBar(
-              background: _buildBlurBackground(),
-            ),
+      flexibleSpace: Stack(
+        children: <Widget>[
+          Positioned.fill(
+            child: _buildBlurBackground(),
+          ),
+        ],
+      ),
     );
   }
 
   Widget _buildBlurBackground() {
+    if (!isScrolled) {
+      return Container(
+        color: Colors.transparent,
+      );
+    }
+
     return ClipRect(
       child: BackdropFilter(
         filter: ImageFilter.blur(sigmaX: 21.75, sigmaY: 21.75),
