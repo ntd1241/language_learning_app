@@ -17,7 +17,7 @@ class VocabSetsList extends StatelessWidget {
         ),
         delegate: SliverChildBuilderDelegate(
           (context, index) => VocabSetItem(),
-          childCount: 10,
+          childCount: 3,
         ),
       ),
     );

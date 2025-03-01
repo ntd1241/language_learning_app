@@ -1,5 +1,3 @@
-import 'dart:ui';
-
 import 'package:flutter/material.dart';
 import 'package:language_learning_app/components/app_bars/custom_sliver_app_bar.dart';
 import 'package:language_learning_app/components/buttons/outlined_icon_button/variants/big.dart';
@@ -7,7 +5,6 @@ import 'package:language_learning_app/components/buttons/outlined_icon_button/va
 import 'package:language_learning_app/components/tabs/custom_tab_bar.dart';
 import 'package:language_learning_app/screens/your_learning/vocab_sets/test.dart';
 import 'package:language_learning_app/screens/your_learning/vocab_sets/vocab_sets_list.dart';
-import 'package:language_learning_app/theme/colors.dart';
 import 'package:language_learning_app/theme/typography.dart';
 
 class YourLearningScreen extends StatelessWidget {

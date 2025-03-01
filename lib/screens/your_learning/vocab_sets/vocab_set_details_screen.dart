@@ -11,7 +11,6 @@ class VocabSetDetailsScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: NestedScrollView(
-        floatHeaderSlivers: true,
         headerSliverBuilder: (context, innerBoxIsScrolled) => [
           SliverOverlapAbsorber(
             handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
@@ -22,9 +21,15 @@ class VocabSetDetailsScreen extends StatelessWidget {
               ),
               isScrolled: innerBoxIsScrolled,
               pinned: true,
-              snap: true,
-              floating: true,
-              expandedHeightOffet: 50,
+              floating: false,
+              snap: false,
+              flexibleWidget: FlexibleSpaceBar(
+                title: Text(
+                  "123",
+                  style: MyTypography.titleL,
+                ),
+              ),
+              expandedHeightOffet: 80,
             ),
           ),
         ],

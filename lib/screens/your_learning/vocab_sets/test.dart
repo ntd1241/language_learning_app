@@ -1,81 +1,50 @@
 import 'package:flutter/material.dart';
+import 'package:language_learning_app/components/app_bars/custom_sliver_app_bar.dart';
+import 'package:language_learning_app/components/buttons/outlined_icon_button/variants/small.dart';
+import 'package:language_learning_app/screens/your_learning/vocab_sets/vocab_sets_list.dart';
+import 'package:language_learning_app/theme/typography.dart';
 
-class HomeScreen extends StatefulWidget {
+class HomeScreen extends StatelessWidget {
   const HomeScreen({super.key});
-
-  @override
-  State<HomeScreen> createState() => _HomeScreenState();
-}
-
-class _HomeScreenState extends State<HomeScreen> {
-  late ScrollController _scrollController;
-
-  @override
-  void initState() {
-    super.initState();
-    _scrollController = ScrollController()
-      ..addListener(() {
-        setState(() {});
-      });
-  }
-
-  bool get _isSliverAppBarExpanded {
-    return _scrollController.hasClients &&
-        _scrollController.offset > (100 - kToolbarHeight);
-  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.indigoAccent,
       body: NestedScrollView(
-        controller: _scrollController,
-        headerSliverBuilder: (BuildContext context, bool innerBoxIsScrolled) {
-          return <Widget>[
-            SliverAppBar(
-              backgroundColor: Colors.indigoAccent,
-              expandedHeight: 120.0,
-              floating: false,
+        headerSliverBuilder: (context, innerBoxIsScrolled) => [
+          SliverOverlapAbsorber(
+            handle: NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+            sliver: CustomSliverAppBar(
+              title: Text("Test", style: MyTypography.titleL),
+              leading: SmallOutlineIconButton(
+                onPressed: () => Navigator.pop(context),
+              ),
+              isScrolled: innerBoxIsScrolled,
               pinned: true,
-              stretch: false,
-              leading: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.dehaze),
+              floating: false,
+              snap: false,
+              flexibleWidget: FlexibleSpaceBar(
+                title: Text(
+                  "Test",
+                  style: MyTypography.titleL,
+                ),
               ),
-              actions: [
-                IconButton(
-                  onPressed: () {},
-                  icon: const Icon(Icons.star),
-                )
-              ],
-              title: _isSliverAppBarExpanded
-                  ? const Text(
-                      'Home Screen',
-                      style: TextStyle(
-                          color: Colors.white,
-                          fontWeight: FontWeight.bold,
-                          fontSize: 20),
-                    )
-                  : null,
-              centerTitle: true,
-              flexibleSpace: FlexibleSpaceBar(
-                titlePadding:
-                    const EdgeInsets.symmetric(horizontal: 12, vertical: 12),
-                title: _isSliverAppBarExpanded
-                    ? null
-                    : const Text(
-                        'Home Screen',
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontWeight: FontWeight.bold,
-                            fontSize: 20),
-                      ),
-              ),
+              expandedHeightOffet: 80,
             ),
-          ];
-        },
-        body: Container(
-          decoration: BoxDecoration(color: Colors.white),
+          ),
+        ],
+        body: Builder(
+          builder: (context) {
+            return CustomScrollView(
+              slivers: [
+                SliverOverlapInjector(
+                  handle:
+                      NestedScrollView.sliverOverlapAbsorberHandleFor(context),
+                ),
+                VocabSetsList()
+              ],
+            );
+          },
         ),
       ),
     );

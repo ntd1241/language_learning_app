@@ -1,26 +1,23 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
-import 'package:language_learning_app/components/app_bars/header.dart';
 import 'package:language_learning_app/theme/colors.dart';
 
 class CustomSliverAppBar extends StatelessWidget {
-  const CustomSliverAppBar({
-    super.key,
-    this.title,
-    this.flexibleSpaceTitle,
-    this.leading,
-    this.actions,
-    this.bottom,
-    this.isScrolled = false,
-    this.pinned = false,
-    this.floating = false,
-    this.snap = false,
-    this.expandedHeightOffet,
-  });
+  const CustomSliverAppBar(
+      {super.key,
+      this.title,
+      this.leading,
+      this.actions,
+      this.bottom,
+      this.isScrolled = false,
+      this.pinned = false,
+      this.floating = false,
+      this.snap = false,
+      this.expandedHeightOffet,
+      this.flexibleWidget});
 
   final Widget? title;
-  final Widget? flexibleSpaceTitle;
   final Widget? leading;
   final List<Widget>? actions;
   final PreferredSizeWidget? bottom;
@@ -29,14 +26,13 @@ class CustomSliverAppBar extends StatelessWidget {
   final bool floating;
   final bool snap;
   final double? expandedHeightOffet;
+  final Widget? flexibleWidget;
 
   @override
   Widget build(BuildContext context) {
     return SliverAppBar(
       toolbarHeight: 48 + 32,
-      expandedHeight: expandedHeightOffet == null
-          ? null
-          : 48 + 32 + (expandedHeightOffet ?? 0),
+      expandedHeight: _expandedHeight(),
       leading: Padding(
         padding: const EdgeInsets.only(left: 24),
         child: Center(
@@ -51,7 +47,7 @@ class CustomSliverAppBar extends StatelessWidget {
           ),
         ),
       ],
-      title: title,
+      title: _buildTitle(),
       centerTitle: true,
       bottom: bottom,
       pinned: pinned,
@@ -59,13 +55,7 @@ class CustomSliverAppBar extends StatelessWidget {
       snap: snap,
       elevation: 0,
       scrolledUnderElevation: 0,
-      flexibleSpace: Stack(
-        children: <Widget>[
-          Positioned.fill(
-            child: _buildBlurBackground(),
-          ),
-        ],
-      ),
+      flexibleSpace: _buildFlexibleSpaceWidget(),
     );
   }
 
@@ -92,5 +82,31 @@ class CustomSliverAppBar extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  double? _expandedHeight() {
+    return expandedHeightOffet == null
+        ? null
+        : 48 + 32 + (expandedHeightOffet ?? 0);
+  }
+
+  Widget? _buildFlexibleSpaceWidget() {
+    if (!isScrolled) {
+      return flexibleWidget;
+    }
+
+    return Stack(
+      children: <Widget>[
+        Positioned.fill(
+          child: _buildBlurBackground(),
+        ),
+      ],
+    );
+  }
+
+  Widget? _buildTitle() {
+    if (flexibleWidget == null) return title;
+
+    return isScrolled ? title : null;
   }
 }
